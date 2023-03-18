@@ -26,6 +26,8 @@
   font-weight: 900;
   font-size: 24px;
   line-height: 1.2;
+  max-width: 220px;
+  margin: 25px 0;
 }
 
 .card__like-button {
@@ -38,11 +40,4 @@
 
 .card__like-button:hover {
   opacity: 0.5;
-}
-
-/* it was necessary to set the max-width for the card title, as the ellipsis/whitespace/overflow settings were no longer working below this resolution*/
-@media screen and (max-width: 620px) {
-  .card__title {
-    max-width: 220px;
-  }
 }

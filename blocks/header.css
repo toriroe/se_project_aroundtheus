@@ -5,6 +5,15 @@
 
 @media screen and (max-width: 600px) {
   .header {
-    padding: 28px 0 32px 27px;
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+  }
+
+  .header__logo {
+    margin: 28px 0 32px 27px;
+    padding: 0;
+    width: 126px;
+    height: 24px;
   }
 }

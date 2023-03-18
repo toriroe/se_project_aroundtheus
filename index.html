@@ -10,7 +10,6 @@
     <meta name="author" content="Tori Roettger" />
     <meta name="keywords" content="travel, photos" />
     <link rel="stylesheet" href="./pages/index.css" />
-    <link rel="stylesheet" href="./vendor/fonts.css" />
     <link rel="shortcut icon" href="favicon.ico" />
 
     <title>Around the U.S.</title>
@@ -32,13 +31,17 @@
             class="profile__photo"
           />
           <div class="profile__description">
-            <h1 class="profile__name">
-              Jacques Cousteau
-              <button class="profile__edit-button"></button>
-            </h1>
+            <div class="profile__name-and-button">
+              <h1 class="profile__name">Jacques Cousteau</h1>
+              <button class="profile__edit-button" aria-label="edit"></button>
+            </div>
             <p class="profile__subtitle">Explorer</p>
           </div>
-          <button class="profile__add-button" type="button"></button>
+          <button
+            class="profile__add-button"
+            type="button"
+            aria-label="follow"
+          ></button>
         </section>
         <section class="gallery">
           <ul class="gallery__cards">
@@ -50,7 +53,11 @@
               />
               <div class="card__description">
                 <h2 class="card__title">Yosemite Valley</h2>
-                <button class="card__like-button" type="button"></button>
+                <button
+                  class="card__like-button"
+                  type="button"
+                  aria-label="like"
+                ></button>
               </div>
             </li>
             <li class="card">
@@ -61,7 +68,11 @@
               />
               <div class="card__description">
                 <h2 class="card__title">Lake Louise</h2>
-                <button class="card__like-button" type="button"></button>
+                <button
+                  class="card__like-button"
+                  type="button"
+                  aria-label="like"
+                ></button>
               </div>
             </li>
             <li class="card">
@@ -72,7 +83,11 @@
               />
               <div class="card__description">
                 <h2 class="card__title">Bald Mountains</h2>
-                <button class="card__like-button" type="button"></button>
+                <button
+                  class="card__like-button"
+                  type="button"
+                  aria-label="like"
+                ></button>
               </div>
             </li>
             <li class="card">
@@ -83,7 +98,11 @@
               />
               <div class="card__description">
                 <h2 class="card__title">Latemar</h2>
-                <button class="card__like-button" type="button"></button>
+                <button
+                  class="card__like-button"
+                  type="button"
+                  aria-label="like"
+                ></button>
               </div>
             </li>
             <li class="card">
@@ -94,7 +113,11 @@
               />
               <div class="card__description">
                 <h2 class="card__title">Vanoise National Park</h2>
-                <button class="card__like-button" type="button"></button>
+                <button
+                  class="card__like-button"
+                  type="button"
+                  aria-label="like"
+                ></button>
               </div>
             </li>
             <li class="card">
@@ -105,7 +128,11 @@
               />
               <div class="card__description">
                 <h2 class="card__title">Lago di Braies</h2>
-                <button class="card__like-button" type="button"></button>
+                <button
+                  class="card__like-button"
+                  type="button"
+                  aria-label="like"
+                ></button>
               </div>
             </li>
           </ul>
