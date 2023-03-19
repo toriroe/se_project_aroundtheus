@@ -8,21 +8,16 @@
 
 .profile__photo {
   border-radius: 50%;
+  margin-right: 30px;
 }
 
 .profile__description {
-  display: flex;
-  flex-direction: column;
-  padding-left: 24px;
-  max-width: 48%;
-}
-
-.profile__name-and-button {
-  display: flex;
+  display: grid;
+  grid-template-areas: "name button" "subtitle subtitle";
+  grid-template-columns: minmax(auto, 373px) auto;
+  grid-gap: 16px 18px;
   align-items: center;
-  justify-content: space-between;
-  padding-bottom: 16px;
-  max-width: 100%;
+  max-width: 415px;
 }
 
 .profile__name {
@@ -30,22 +25,20 @@
   line-height: 1.1;
   font-weight: 500;
   margin: 0;
-  padding-right: 18px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  max-width: 92%;
+  grid-area: name;
 }
 
-/* Used min-width and max-width for edit button rather than just width, as with just width set the button still shrunk at certain screen sizes */
 .profile__edit-button {
   background: transparent url(../images/edit-icon.svg) center no-repeat;
   border: #fff 1px solid;
   height: 24px;
-  min-width: 24px;
-  max-width: 24px;
+  width: 24px;
   margin: 0;
   cursor: pointer;
+  grid-area: button;
 }
 
 .profile__edit-button:hover {
@@ -61,6 +54,8 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  grid-area: subtitle;
+  max-width: 415px;
 }
 
 .profile__add-button {
@@ -69,8 +64,8 @@
   border-radius: 2px;
   width: 150px;
   height: 50px;
-  margin-left: auto;
   cursor: pointer;
+  margin-left: auto;
 }
 
 .profile__add-button:hover {
@@ -82,39 +77,37 @@
     flex-direction: column;
   }
 
-  .profile__description {
-    padding: 0;
-    max-width: 90;
+  .profile__photo {
+    margin: 0;
+    margin-bottom: 30px;
   }
 
-  .profile__name-and-button {
-    padding-bottom: 14px;
-    padding-top: 26px;
-    align-items: center;
+  .profile__description {
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 282px;
+    justify-content: center;
   }
 
   .profile__name {
     font-size: 22px;
     line-height: 1.2;
-    align-self: center;
-    padding-right: 10px;
   }
 
-  /* Used min-width and max-width for edit button rather than just width, as with just width set the button still stretched at certain screen sizes */
   .profile__edit-button {
     height: 18px;
-    max-width: 18px;
-    min-width: 18px;
+    width: 18px;
   }
 
   .profile__subtitle {
     font-size: 14px;
-    align-self: center;
     padding-bottom: 36px;
+    margin: 0 auto;
+    max-width: 282px;
   }
 
   .profile__add-button {
-    align-self: center;
     margin-left: 0;
     width: 282px;
   }
