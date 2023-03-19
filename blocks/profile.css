@@ -14,12 +14,13 @@
   display: flex;
   flex-direction: column;
   padding-left: 24px;
-  max-width: 47%;
+  max-width: 48%;
 }
 
 .profile__name-and-button {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding-bottom: 16px;
   max-width: 100%;
 }
@@ -29,18 +30,21 @@
   line-height: 1.1;
   font-weight: 500;
   margin: 0;
+  padding-right: 18px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  max-width: 92%;
 }
 
+/* Used min-width and max-width for edit button rather than just width, as with just width set the button still shrunk at certain screen sizes */
 .profile__edit-button {
   background: transparent url(../images/edit-icon.svg) center no-repeat;
   border: #fff 1px solid;
   height: 24px;
-  width: 24px;
-  margin-left: 10px;
-  margin-right: 10px;
+  min-width: 24px;
+  max-width: 24px;
+  margin: 0;
   cursor: pointer;
 }
 
@@ -80,6 +84,7 @@
 
   .profile__description {
     padding: 0;
+    max-width: 90;
   }
 
   .profile__name-and-button {
@@ -92,11 +97,14 @@
     font-size: 22px;
     line-height: 1.2;
     align-self: center;
+    padding-right: 10px;
   }
 
+  /* Used min-width and max-width for edit button rather than just width, as with just width set the button still stretched at certain screen sizes */
   .profile__edit-button {
-    width: 18px;
     height: 18px;
+    max-width: 18px;
+    min-width: 18px;
   }
 
   .profile__subtitle {
