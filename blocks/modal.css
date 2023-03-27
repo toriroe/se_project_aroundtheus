@@ -1,0 +1,38 @@
+.modal {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 0;
+  height: 100vh;
+  min-width: 100%;
+  z-index: 2;
+  box-sizing: border-box;
+  display: none;
+}
+
+.modal_opened {
+  display: block;
+}
+
+.modal__container {
+  background-color: #fff;
+  width: 430px;
+  max-width: 100%;
+  border-radius: 10px;
+  padding-bottom: 30px;
+  position: relative;
+  margin: auto;
+}
+
+.form__button-exit {
+  position: absolute;
+  background: transparent url(../images/close-icon.svg) center no-repeat;
+  border: none;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  position: absolute;
+  top: -40px;
+  right: -40px;
+}

@@ -16,6 +16,29 @@
     <title>Around the U.S.</title>
   </head>
   <body class="page">
+    <section class="modal modal_opened">
+      <form class="modal__container form">
+        <button class="form__button-exit" type="button"></button>
+        <fieldset class="form__fieldset">
+          <label class="form__label" for="edit">Edit profile</label>
+          <input
+            type="text"
+            class="form__input"
+            id="name"
+            placeholder="Name"
+            required
+          />
+          <input
+            type="text"
+            class="form__input"
+            id="description"
+            placeholder="Description"
+            required
+          />
+          <button class="form__button-submit" type="submit">Save</button>
+        </fieldset>
+      </form>
+    </section>
     <div class="page__content">
       <header class="header">
         <img
