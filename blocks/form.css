@@ -12,6 +12,10 @@
   right: -40px;
 }
 
+.form__button-exit:hover {
+  opacity: 0.6;
+}
+
 .form__fieldset {
   display: flex;
   flex-direction: column;
@@ -56,4 +60,34 @@
 
 .form__button-submit:hover {
   opacity: 0.8;
+}
+
+@media screen and (max-width: 620px) {
+  .form__button-exit {
+    background: transparent url(../images/close-icon-mobile.svg) center
+      no-repeat;
+    width: 26px;
+    height: 26px;
+    right: 0px;
+  }
+
+  .form__fieldset {
+    margin-left: 22px;
+    width: 238px;
+  }
+
+  .form__label {
+    font-size: 18px;
+    margin: 25px 0 45px;
+  }
+
+  .form__input {
+    width: 238px;
+  }
+
+  .form__button-submit {
+    font-size: 14px;
+    width: 238px;
+    margin: 45px auto 0;
+  }
 }
