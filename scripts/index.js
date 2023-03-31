@@ -24,3 +24,7 @@ let initialCards = [
     link: "https://unsplash.com/photos/jTJ9-4ESzU4",
   }),
 ];
+
+let profileEditButton = document.querySelector("#profile-edit-button");
+
+console.log(profileEditButton);
