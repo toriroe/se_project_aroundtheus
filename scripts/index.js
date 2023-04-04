@@ -56,22 +56,29 @@ let inputDescription = document.querySelector("#form-input-description");
 let profileName = document.querySelector(".profile__name");
 let profileSubtitle = document.querySelector(".profile__subtitle");
 let formSubmitButton = document.querySelector("#form-submit-button");
+let modalForm = document.querySelector('[name="profilemodalform"]');
 
-function toggleForm() {
+function openForm() {
   inputName.value = profileName.textContent;
   inputDescription.value = profileSubtitle.textContent;
-  profileEditModal.classList.toggle("modal_opened");
+  profileEditModal.classList.add("modal_opened");
 }
 
-profileEditButton.addEventListener("click", toggleForm);
-
-formExitButton.addEventListener("click", toggleForm);
+function closeForm() {
+  profileEditModal.classList.remove("modal_opened");
+}
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = inputName.value;
   profileSubtitle.textContent = inputDescription.value;
-  profileEditModal.classList.toggle("modal_opened");
+  profileEditModal.classList.remove("modal_opened");
 }
 
-formSubmitButton.addEventListener("click", handleProfileFormSubmit);
+//Event Listeners
+
+profileEditButton.addEventListener("click", openForm);
+
+formExitButton.addEventListener("click", closeForm);
+
+modalForm.addEventListener("submit", handleProfileFormSubmit);

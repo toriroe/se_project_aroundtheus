@@ -57,18 +57,19 @@
 
     <!-- Code for Modal box -->
     <div class="modal" id="profile-edit-modal">
-      <form class="modal__container form">
+      <div class="modal__container">
         <button
           class="form__button-exit"
           type="button"
           id="form-exit-button"
         ></button>
-        <fieldset class="form__fieldset">
+        <form class="modal__form" name="profilemodalform">
           <h2 class="form__label">Edit profile</h2>
           <input
             type="text"
             class="form__input"
             id="form-input-name"
+            name="name"
             placeholder="Name"
             required
           />
@@ -76,6 +77,7 @@
             type="text"
             class="form__input"
             id="form-input-description"
+            name="description"
             placeholder="About Me"
             required
           />
@@ -86,8 +88,8 @@
           >
             Save
           </button>
-        </fieldset>
-      </form>
+        </form>
+      </div>
     </div>
     <!-- End of code for Modal -->
 
