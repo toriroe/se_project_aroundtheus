@@ -25,9 +25,32 @@
   margin: auto;
 }
 
+.modal__button-exit {
+  position: absolute;
+  background: transparent url(../images/close-icon.svg) center no-repeat;
+  border: none;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  top: -40px;
+  right: -40px;
+}
+
+.modal__button-exit:hover {
+  opacity: 0.6;
+}
+
 @media screen and (max-width: 620px) {
   .modal__container {
     width: 282px;
     padding-bottom: 25px;
+  }
+
+  .modal__button-exit {
+    background: transparent url(../images/close-icon-mobile.svg) center
+      no-repeat;
+    width: 26px;
+    height: 26px;
+    right: 0px;
   }
 }

@@ -1,19 +1,4 @@
-.form__button-exit {
-  position: absolute;
-  background: transparent url(../images/close-icon.svg) center no-repeat;
-  border: none;
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  top: -40px;
-  right: -40px;
-}
-
-.form__button-exit:hover {
-  opacity: 0.6;
-}
-
-.modal__form {
+.form {
   display: flex;
   flex-direction: column;
   border: none;
@@ -60,15 +45,7 @@
 }
 
 @media screen and (max-width: 620px) {
-  .form__button-exit {
-    background: transparent url(../images/close-icon-mobile.svg) center
-      no-repeat;
-    width: 26px;
-    height: 26px;
-    right: 0px;
-  }
-
-  .modal__form {
+  .form {
     margin-left: 22px;
     width: 238px;
   }
