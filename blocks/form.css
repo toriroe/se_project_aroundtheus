@@ -14,7 +14,7 @@
   font-weight: 900;
   line-height: 1.2;
   color: #000;
-  margin: 34px 0 34px 36px;
+  margin: 34px 0 24px 36px;
 }
 
 .form__input {
@@ -23,7 +23,7 @@
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   padding: 13.5px 0 13.5px;
-  margin: 30px auto 0;
+  margin: 16px auto 0;
   width: 358px;
 }
 
@@ -37,6 +37,7 @@
   width: 358px;
   height: 50.15px;
   margin: 48px auto 0;
+  padding: 0;
   cursor: pointer;
 }
 
@@ -52,7 +53,7 @@
 
   .form__label {
     font-size: 18px;
-    margin: 25px 0 45px;
+    margin: 25px 0 31px;
   }
 
   .form__input {

@@ -55,7 +55,6 @@ let inputName = document.querySelector("#form-input-name");
 let inputDescription = document.querySelector("#form-input-description");
 let profileName = document.querySelector(".profile__name");
 let profileSubtitle = document.querySelector(".profile__subtitle");
-let formSubmitButton = document.querySelector("#form-submit-button");
 let modalForm = document.querySelector('[name="profilemodalform"]');
 
 function openForm() {
