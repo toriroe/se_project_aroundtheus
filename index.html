@@ -41,9 +41,10 @@
             <p class="profile__subtitle">Explorer</p>
           </div>
           <button
-            class="profile__add-button"
+            class="card__add-button"
             type="button"
-            aria-label="follow"
+            aria-label="add-card"
+            id="card-add-button"
           ></button>
         </section>
         <section class="gallery">
@@ -55,15 +56,11 @@
       </footer>
     </div>
 
-    <!-- Code for Modal box -->
+    <!-- Code for Profile Edit Modal box -->
     <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
-        <button
-          class="modal__button-exit"
-          type="button"
-          id="form-exit-button"
-        ></button>
-        <form class="modal__form form" name="profilemodalform">
+        <button class="modal__button-exit" type="button"></button>
+        <form class="modal__form form" id="profile-modal-form">
           <h2 class="form__label">Edit profile</h2>
           <input
             type="text"
@@ -91,7 +88,59 @@
         </form>
       </div>
     </div>
-    <!-- End of code for Modal -->
+    <!-- End of code for Profile Edit Modal -->
+
+    <!--Code for Card Edit Modal-->
+    <div class="modal" id="card-add-modal">
+      <div class="modal__container">
+        <button class="modal__button-exit" type="button"></button>
+        <form
+          class="modal__form form"
+          id="card-modal-form"
+          name="card-modal-form"
+        >
+          <h2 class="form__label">New Place</h2>
+          <input
+            type="text"
+            class="form__input"
+            id="card-form-input-title"
+            name="title"
+            placeholder="Place Name"
+            required
+          />
+          <input
+            type="text"
+            class="form__input"
+            id="card-form-input-url"
+            name="url"
+            placeholder="Image URL"
+            required
+          />
+          <!--https://unsplash.com/example.jpg-->
+          <button
+            class="form__button-submit"
+            type="submit"
+            id="form-submit-button"
+          >
+            Create
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!--End code for Card Edit Modal-->
+
+    <!--Start of code for Preview Image Modal-->
+
+    <div class="modal modal__preview" id="modal-preview-image">
+      <div class="modal__container-image">
+        <button class="modal__button-exit" type="button"></button>
+        <img src="" class="modal__image" alt="" />
+        <p class="modal__preview-caption"></p>
+      </div>
+    </div>
+
+    <!--End of code for Preview Image Modal-->
 
     <template id="card-template">
       <li class="card">
@@ -104,6 +153,11 @@
             aria-label="like"
           ></button>
         </div>
+        <button
+          class="card__delete-button"
+          type="button"
+          aria-label="delete"
+        ></button>
       </li>
     </template>
     <script src="./scripts/index.js"></script>
