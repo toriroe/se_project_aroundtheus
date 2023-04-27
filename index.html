@@ -57,7 +57,7 @@
     </div>
 
     <!-- Code for Profile Edit Modal box -->
-    <div class="modal" id="profile-edit-modal">
+    <div class="modal" id="modal-profile-edit">
       <div class="modal__container">
         <button class="modal__button-exit" type="button"></button>
         <form class="modal__form form" id="profile-modal-form">
@@ -78,20 +78,14 @@
             placeholder="About Me"
             required
           />
-          <button
-            class="form__button-submit"
-            type="submit"
-            id="form-submit-button"
-          >
-            Save
-          </button>
+          <button class="form__button-submit" type="submit">Save</button>
         </form>
       </div>
     </div>
     <!-- End of code for Profile Edit Modal -->
 
-    <!--Code for Card Edit Modal-->
-    <div class="modal" id="card-add-modal">
+    <!--Code for Card Add Modal-->
+    <div class="modal" id="modal-add-card">
       <div class="modal__container">
         <button class="modal__button-exit" type="button"></button>
         <form
@@ -117,13 +111,7 @@
             required
           />
           <!--https://unsplash.com/example.jpg-->
-          <button
-            class="form__button-submit"
-            type="submit"
-            id="form-submit-button"
-          >
-            Create
-          </button>
+          <button class="form__button-submit" type="submit">Create</button>
         </form>
       </div>
     </div>
@@ -132,7 +120,7 @@
 
     <!--Start of code for Preview Image Modal-->
 
-    <div class="modal modal__preview" id="modal-preview-image">
+    <div class="modal" id="modal-preview-image">
       <div class="modal__container-image">
         <button class="modal__button-exit" type="button"></button>
         <img src="" class="modal__image" alt="" />
