@@ -1,6 +1,6 @@
 // INITAL CARDS ARRAY
 
-let initialCards = [
+const initialCards = [
   {
     name: "Alaverdi, Armenia",
     link: "https://images.unsplash.com/photo-1543862475-eb136770ae9b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
@@ -53,6 +53,14 @@ const inputCardTitle = document.querySelector("#card-form-input-title");
 const inputCardImage = document.querySelector("#card-form-input-url");
 const cardModalForm = document.querySelector("#card-modal-form");
 
+// IMAGE PREVIEW MODAL VARIABLES
+
+const modalImage = modalImagePreview.querySelector(".modal__image");
+const modalCaption = modalImagePreview.querySelector(".modal__preview-caption");
+const previewExitButton = modalImagePreview.querySelector(
+  ".modal__button-exit"
+);
+
 // GET CARD ELEMENT FUCTION / RENDER CARDS
 
 function getCardElement(cardData) {
@@ -61,13 +69,6 @@ function getCardElement(cardData) {
   const cardTitle = cardElement.querySelector(".card__title");
   const cardLikeButton = cardElement.querySelector(".card__like-button");
   const cardDeleteButton = cardElement.querySelector(".card__delete-button");
-  const modalImage = modalImagePreview.querySelector(".modal__image");
-  const modalCaption = modalImagePreview.querySelector(
-    ".modal__preview-caption"
-  );
-  const previewExitButton = modalImagePreview.querySelector(
-    ".modal__button-exit"
-  );
 
   cardImage.addEventListener("click", () => {
     openModal(modalImagePreview);
@@ -75,9 +76,6 @@ function getCardElement(cardData) {
     modalImage.alt = cardImage.alt;
     modalCaption.textContent = cardTitle.textContent;
   });
-  previewExitButton.addEventListener("click", () =>
-    closeModal(modalImagePreview)
-  );
   cardLikeButton.addEventListener("click", () => {
     cardLikeButton.classList.toggle("card__like-button_active");
   });
@@ -108,12 +106,25 @@ function closeModal(modal) {
   modal.classList.remove("modal_opened");
 }
 
+// OPEN AND FILL PROFILE EDIT MODAL
+
+function fillProfileForm() {
+  inputName.value = profileName.textContent;
+  inputDescription.value = profileSubtitle.textContent;
+}
+
+function openEditProfileModal() {
+  fillProfileForm();
+  openModal(modalProfileEdit);
+}
+
 // EVENT HANDLERS - for editing profile and adding new card
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = inputName.value;
   profileSubtitle.textContent = inputDescription.value;
+  profileModalForm.reset();
   closeModal(modalProfileEdit);
 }
 
@@ -122,16 +133,13 @@ function handleCardFormSubmit(evt) {
   const name = inputCardTitle.value;
   const link = inputCardImage.value;
   renderCard({ name, link }, cardList);
+  cardModalForm.reset();
   closeModal(modalAddCard);
 }
 
 // EVENT LISTENERS
 
-profileEditButton.addEventListener("click", () => {
-  inputName.value = profileName.textContent;
-  inputDescription.value = profileSubtitle.textContent;
-  openModal(modalProfileEdit);
-});
+profileEditButton.addEventListener("click", openEditProfileModal);
 
 profileExitButton.addEventListener("click", () => closeModal(modalProfileEdit));
 
@@ -142,3 +150,7 @@ cardAddButton.addEventListener("click", () => openModal(modalAddCard));
 cardExitButton.addEventListener("click", () => closeModal(modalAddCard));
 
 cardModalForm.addEventListener("submit", handleCardFormSubmit);
+
+previewExitButton.addEventListener("click", () =>
+  closeModal(modalImagePreview)
+);

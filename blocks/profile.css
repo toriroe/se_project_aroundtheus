@@ -39,6 +39,7 @@
   margin: 0;
   cursor: pointer;
   grid-area: button;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .profile__edit-button:hover {
@@ -66,6 +67,7 @@
   height: 50px;
   cursor: pointer;
   margin-left: auto;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .profile__add-card-button:hover {
