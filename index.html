@@ -68,17 +68,29 @@
             id="form-input-name"
             name="name"
             placeholder="Name"
+            minlength="2"
+            maxlength="40"
             required
           />
+          <span class="form__error" id="form-input-name-error"></span>
           <input
             type="text"
             class="form__input"
             id="form-input-description"
             name="description"
             placeholder="About Me"
+            minlength="2"
+            maxlength="200"
             required
           />
-          <button class="form__button-submit" type="submit">Save</button>
+          <span class="form__error" id="form-input-description-error"></span>
+          <button
+            class="form__button-submit form__button_disabled"
+            type="submit"
+            disabled
+          >
+            Save
+          </button>
         </form>
       </div>
     </div>
@@ -100,8 +112,11 @@
             id="card-form-input-title"
             name="title"
             placeholder="Place Name"
+            minlength="1"
+            maxlength="30"
             required
           />
+          <span class="form__error" id="card-form-input-title-error"></span>
           <input
             type="url"
             class="form__input"
@@ -110,8 +125,14 @@
             placeholder="Image URL"
             required
           />
-          <!--https://unsplash.com/example.jpg-->
-          <button class="form__button-submit" type="submit">Create</button>
+          <span class="form__error" id="card-form-input-url-error"></span>
+          <button
+            class="form__button-submit form__button_disabled"
+            type="submit"
+            disabled
+          >
+            Create
+          </button>
         </form>
       </div>
     </div>
@@ -149,5 +170,6 @@
       </li>
     </template>
     <script src="./scripts/index.js" defer></script>
+    <script src="./scripts/validation.js"></script>
   </body>
 </html>
