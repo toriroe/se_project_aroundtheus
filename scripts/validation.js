@@ -35,9 +35,10 @@ function hideInputError(
 
 function checkInputValidity(formElement, inputElement, options) {
   if (!inputElement.validity.valid) {
-    return showInputError(formElement, inputElement, options);
+    showInputError(formElement, inputElement, options);
+  } else {
+    hideInputError(formElement, inputElement, options);
   }
-  hideInputError(formElement, inputElement, options);
 }
 
 function hasInvalidInput(inputList) {
@@ -61,15 +62,18 @@ function toggleButtonState(
 ) {
   if (hasInvalidInput(inputElements)) {
     disableButton(submitButton, { inactiveButtonClass });
-    return;
+  } else {
+    enableButton(submitButton, { inactiveButtonClass });
   }
-  enableButton(submitButton, { inactiveButtonClass });
 }
 
 function setEventListeners(formElement, options) {
   const { inputSelector } = options;
-  const inputElements = Array.from(formElement.querySelectorAll(inputSelector));
-  const submitButton = formElement.querySelector(options.submitButtonSelector);
+  const { submitButtonSelector } = options;
+  const inputElements = [...formElement.querySelectorAll(inputSelector)];
+  const submitButton = formElement.querySelector(submitButtonSelector);
+
+  toggleButtonState(inputElements, submitButton, options);
   inputElements.forEach((inputElement) => {
     inputElement.addEventListener("input", () => {
       checkInputValidity(formElement, inputElement, options);

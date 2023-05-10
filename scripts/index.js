@@ -83,7 +83,7 @@ function getCardElement(cardData) {
     cardElement.remove();
   });
   cardTitle.textContent = cardData.name;
-  cardImage.alt = "Photo of " + cardTitle.textContent;
+  cardImage.alt = `Photo of ${cardTitle.textContent}`;
   cardImage.src = cardData.link;
 
   return cardElement;
@@ -154,6 +154,10 @@ function handleCardFormSubmit(evt) {
   renderCard({ name, link }, cardList);
   cardModalForm.reset();
   closeModal(modalAddCard);
+
+  const inputElements = [...modalAddCard.querySelectorAll(".form__input")];
+  const submitButton = modalAddCard.querySelector(".form__button");
+  toggleButtonState(inputElements, submitButton, config);
 }
 
 // EVENT LISTENERS
