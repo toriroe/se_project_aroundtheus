@@ -6,7 +6,7 @@ import {
 } from "../utils/utils.js";
 
 class Card {
-  constructor(cardData, cardSelector) {
+  constructor(data, cardSelector) {
     // cardSelector = "#card-template"
     this._name = data.name;
     this._link = data.link;
@@ -66,9 +66,8 @@ class Card {
 
   getView() {
     this._element = this._getTemplate();
-    this._element.querySelector(
-      ".card_image"
-    ).style.backgroundImage = `url(${this._link})`;
+    this._element.querySelector(".card_image").src = this._link;
+    console.log(this._link);
     this._element.querySelector("card-title").textContent = this._name;
     this._element.querySelector("card_image").alt = `Photo of ${this._name}`;
     this._setEventListeners();

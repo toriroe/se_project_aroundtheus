@@ -51,14 +51,13 @@ addCardModalValidator.enableValidation();
 
 // RENDER INITIAL CARDS
 
-function renderCard(cardData) {
-  const card = new Card(cardData, "#card-template");
-  const cardElement = card.getView();
-  return cardElement;
+function renderCard(cardData, wrapper) {
+  const card = new Card(cardData, "#card-template").getView();
+  wrapper.prepend(card);
 }
 
-initialCards.forEach((card) => {
-  cardList.prepend(renderCard(card));
+initialCards.forEach((item) => {
+  renderCard(item, cardList);
 });
 
 // OPEN AND FILL PROFILE EDIT MODAL
