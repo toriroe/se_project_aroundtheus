@@ -19,7 +19,7 @@ class Card {
   }
 
   _handleLikeButton() {
-    this._likeButton.classList.toggle(".card__like-button_active");
+    this._likeButton.classList.toggle("card__like-button_active");
   }
 
   _handleDeleteButton() {
