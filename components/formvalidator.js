@@ -35,7 +35,7 @@ class FormValidator {
     }
   }
 
-  _hasInvalidInput(inputElements) {
+  _hasInvalidInput() {
     return this._inputElements.some((inputElement) => {
       return !inputElement.validity.valid;
     });
@@ -64,6 +64,7 @@ class FormValidator {
         this._toggleButtonState();
       });
     });
+    this._toggleButtonState();
   }
 
   enableValidation() {
