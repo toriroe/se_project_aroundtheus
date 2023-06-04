@@ -19,6 +19,7 @@ This is the sixth project of the Web Development program at Practicum - it is an
 - Delete buttons added for deleting card elements
 - Card elements and images rendered through Javascript using <template> element
 - Forms validated using Javascript
+- Javascript code is organized into modules and accessed using import/export
 
 ## Plan on improving the project
 
