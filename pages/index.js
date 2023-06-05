@@ -1,5 +1,5 @@
-import FormValidator from "../components/formvalidator.js";
-import Card from "../components/card.js";
+import FormValidator from "../components/Formvalidator.js";
+import Card from "../components/Card.js";
 import { openModal, closeModal } from "../utils/utils.js";
 
 // INITIAL CARDS ARRAY
@@ -44,16 +44,17 @@ const inputName = document.querySelector("#form-input-name");
 const inputDescription = document.querySelector("#form-input-description");
 const profileName = document.querySelector(".profile__name");
 const profileSubtitle = document.querySelector(".profile__subtitle");
-const profileModalForm = document.querySelector("#profile-modal-form");
+const profileModalForm = document.forms["profile-modal-form"];
 const cardAddButton = document.querySelector("#card-add-button");
 const inputCardTitle = document.querySelector("#card-form-input-title");
 const inputCardImage = document.querySelector("#card-form-input-url");
-const cardModalForm = document.querySelector("#card-modal-form");
+const cardModalForm = document.forms["card-modal-form"];
 const modalExitButtons = document.querySelectorAll(".modal__button-exit");
 
 // VALIDATION
 
 const config = {
+  formSelector: ".form",
   inputSelector: ".form__input",
   submitButtonSelector: ".form__button",
   inactiveButtonClass: "form__button_disabled",
@@ -61,11 +62,19 @@ const config = {
   errorClass: "form__error_visible",
 };
 
-const editProfileModalValidator = new FormValidator(config, modalProfileEdit);
-editProfileModalValidator.enableValidation();
+const formValidators = {};
 
-const addCardModalValidator = new FormValidator(config, modalAddCard);
-addCardModalValidator.enableValidation();
+const enableValidation = (config) => {
+  const formList = Array.from(document.querySelectorAll(config.formSelector));
+  formList.forEach((formElement) => {
+    const validator = new FormValidator(config, formElement);
+    const formName = formElement.getAttribute("name");
+    formValidators[formName] = validator;
+    validator.enableValidation();
+  });
+};
+
+enableValidation(config);
 
 // RENDER CARD FUNCTION
 
@@ -103,7 +112,7 @@ function handleProfileFormSubmit(evt) {
   profileName.textContent = inputName.value;
   profileSubtitle.textContent = inputDescription.value;
   profileModalForm.reset();
-  editProfileModalValidator.enableValidation(); // disable submit button when reopened
+  formValidators["profile-form"].resetValidation(); // disable submit button when reopened
   closeModal(modalProfileEdit);
 }
 
@@ -113,7 +122,7 @@ function handleCardFormSubmit(evt) {
   const newCard = renderCard(cardData);
   cardList.prepend(newCard);
   cardModalForm.reset();
-  addCardModalValidator.enableValidation(); // disable submit button when reopened
+  formValidators["card-form"].resetValidation(); // disable submit button when reopened
   closeModal(modalAddCard);
 }
 

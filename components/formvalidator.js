@@ -26,6 +26,13 @@ class FormValidator {
     errorMessageElem.classList.remove(this._errorClass);
   }
 
+  resetValidation() {
+    this._toggleButtonState();
+    this._inputElements.forEach((inputElement) => {
+      this._hideInputError(inputElement);
+    });
+  }
+
   _toggleButtonState() {
     if (this._hasInvalidInput()) {
       this._disableButton();
