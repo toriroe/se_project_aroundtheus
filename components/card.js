@@ -1,17 +1,16 @@
-import { openModal, closeModal } from "../utils/utils.js";
-
 class Card {
-  constructor(data, cardSelector) {
-    this._name = data.name;
-    this._link = data.link;
+  constructor(cardData, cardSelector, handleCardClick) {
+    this._name = cardData.name;
+    this._link = cardData.link;
 
     this._cardSelector = cardSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   _setEventListeners() {
-    this._cardImage.addEventListener("click", (evt) =>
-      this._handleImagePreviewModal(evt)
-    );
+    this._cardImage.addEventListener("click", () => {
+      this._handleCardClick({ name: this._name, link: this._link });
+    });
     this._likeButton.addEventListener("click", () => this._handleLikeButton());
     this._deleteButton.addEventListener("click", () =>
       this._handleDeleteButton()
@@ -24,13 +23,6 @@ class Card {
 
   _handleDeleteButton() {
     this._cardElement.remove();
-  }
-
-  _handleImagePreviewModal(evt) {
-    this._modalImage.src = evt.target.src;
-    this._modalImage.alt = evt.target.alt;
-    this._modalCaption.textContent = evt.target.alt;
-    openModal(this._modalImagePreview);
   }
 
   _getTemplate() {
