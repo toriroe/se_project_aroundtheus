@@ -6,13 +6,11 @@ export default class Popup {
   }
 
   open() {
-    // opens popup
     this._popupElement.classList.add("modal_opened");
-    this._setEventListeners();
+    this.setEventListeners();
   }
 
   close() {
-    // closes popup
     this._popupElement.classList.remove("modal_opened");
     document.removeEventListener("keydown", this._handleEscClose);
     document.removeEventListener("click", this._handleClickClose);
@@ -26,6 +24,7 @@ export default class Popup {
   }
 
   _handleClickClose(evt) {
+    // closes popup on 'exit button' click, or clicking outside of modal
     if (
       evt.target.classList.contains("modal") ||
       evt.target.classList.contains("modal__button-exit")
@@ -34,7 +33,7 @@ export default class Popup {
     }
   }
 
-  _setEventListeners() {
+  setEventListeners() {
     document.addEventListener("keydown", this._handleEscClose);
     this._popupElement.addEventListener("click", this._handleClickClose);
   }

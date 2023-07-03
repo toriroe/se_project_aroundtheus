@@ -1,38 +1,11 @@
+import "./index.css";
 import FormValidator from "../components/Formvalidator.js";
 import Card from "../components/Card.js";
 import Section from "../components/Section.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/Userinfo.js";
-
-// INITIAL CARDS ARRAY
-
-const initialCards = [
-  {
-    name: "Alaverdi, Armenia",
-    link: "https://images.unsplash.com/photo-1543862475-eb136770ae9b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
-  },
-  {
-    name: "Angkor Wat, Cambodia",
-    link: "https://images.unsplash.com/photo-1600807455249-89d2e285b9e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-  },
-  {
-    name: "Arches National Park, USA",
-    link: "https://images.unsplash.com/photo-1527333656061-ca7adf608ae1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80",
-  },
-  {
-    name: "Redwood National Park, USA",
-    link: "https://images.unsplash.com/photo-1547014762-3a94fb4df70a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=686&q=80",
-  },
-  {
-    name: "Mount Fuji, Japan",
-    link: "https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
-  },
-  {
-    name: "Deadvlei, Namibia",
-    link: "https://images.unsplash.com/photo-1448831338187-78296e6fdc4d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80",
-  },
-];
+import { initialCards } from "../utils/constants.js";
 
 // MODAL ELEMENTS
 
@@ -41,7 +14,6 @@ const inputName = document.querySelector("#form-input-name");
 const inputDescription = document.querySelector("#form-input-description");
 const profileModalForm = document.forms["profile-modal-form"];
 const cardAddButton = document.querySelector("#card-add-button");
-const cardModalForm = document.forms["card-modal-form"];
 
 // VALIDATION
 
@@ -84,7 +56,7 @@ const userInfo = new UserInfo(
   document.querySelector(".profile__subtitle")
 );
 
-// RENDER CARD FUNCTION
+// RENDER CARD FUNCTIONS
 
 function handleCardClick({ name, link }) {
   imagePreviewPopup.open(name, link);
@@ -101,7 +73,7 @@ const cardSection = new Section(
   {
     items: initialCards,
     renderer: (cardData) => {
-      const cardElement = renderCard(cardData); // call renderCard function
+      const cardElement = renderCard(cardData);
       cardSection.addItem(cardElement);
     },
   },
