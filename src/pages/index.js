@@ -6,25 +6,16 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/Userinfo.js";
 import { initialCards } from "../utils/constants.js";
+import { config } from "../utils/constants.js";
 
 // MODAL ELEMENTS
 
 const profileEditButton = document.querySelector("#profile-edit-button");
 const inputName = document.querySelector("#form-input-name");
 const inputDescription = document.querySelector("#form-input-description");
-const profileModalForm = document.forms["profile-modal-form"];
 const cardAddButton = document.querySelector("#card-add-button");
 
 // VALIDATION
-
-const config = {
-  formSelector: ".form",
-  inputSelector: ".form__input",
-  submitButtonSelector: ".form__button",
-  inactiveButtonClass: "form__button_disabled",
-  inputErrorClass: "form__input_type_error",
-  errorClass: "form__error_visible",
-};
 
 const formValidators = {};
 
@@ -88,17 +79,13 @@ function handleProfileFormSubmit(formData) {
   const { name, description } = formData;
   userInfo.setUserInfo(name, description);
   editProfilePopup.close();
-  profileModalForm.reset();
-  formValidators["profile-form"].resetValidation(); // disable submit button when reopened
 }
 
 function handleCardFormSubmit(inputValues) {
   const { name, link } = inputValues;
   const cardElement = renderCard({ name, link });
-  cardSection.addItem(cardElement);
+  cardSection.prependItem(cardElement);
   addCardPopup.close();
-  // cardModalForm.reset();
-  formValidators["card-form"].resetValidation(); // disable submit button when reopened
 }
 
 // EVENT LISTENERS
@@ -108,8 +95,10 @@ profileEditButton.addEventListener("click", () => {
   inputName.value = profileName;
   inputDescription.value = description;
   editProfilePopup.open();
+  formValidators["profile-form"].resetValidation();
 });
 
 cardAddButton.addEventListener("click", () => {
   addCardPopup.open();
+  formValidators["card-form"].resetValidation();
 });

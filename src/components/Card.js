@@ -41,11 +41,6 @@ class Card {
     this._deleteButton = this._cardElement.querySelector(
       ".card__delete-button"
     );
-    this._modalImagePreview = document.querySelector("#modal-preview-image");
-    this._modalImage = this._modalImagePreview.querySelector(".modal__image");
-    this._modalCaption = this._modalImagePreview.querySelector(
-      ".modal__preview-caption"
-    );
     this._cardImage.src = this._link;
     this._cardTitle.textContent = this._name;
     this._cardImage.alt = `Photo of ${this._name}`;
