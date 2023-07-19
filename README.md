@@ -27,4 +27,4 @@ This is the sixth project of the Web Development program at Practicum - it is an
 
 # GitHub Page
 
-- [link to github page]: (https://toriroe.github.io/se_project_aroundtheus)
+- [link to github page]: https://toriroe.github.io/se_project_aroundtheus
