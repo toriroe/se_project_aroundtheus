@@ -6,6 +6,15 @@ export default class PopupWithForm extends Popup {
     this._popupForm = this._popupElement.querySelector(".modal__form");
     this._handleFormSubmit = handleFormSubmit;
     this._inputs = this._popupForm.querySelectorAll(".form__input");
+    this._submitButton = this._popupForm.querySelector(".form__button");
+  }
+
+  setLoading(isLoading, normalText) {
+    if (isLoading) {
+      this._submitButton.textContent = "Saving...";
+    } else {
+      this._submitButton.textContent = normalText;
+    }
   }
 
   _getInputValues() {

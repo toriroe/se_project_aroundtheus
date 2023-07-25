@@ -1,20 +1,28 @@
 class Card {
   constructor(
     cardData,
+    myId,
     cardTemplateSelector,
-    handleCardClick
+    handleCardClick,
+    handleDeleteClick
     // handleLikeClick
   ) {
     this._name = cardData.name;
     this._link = cardData.link;
     this._likes = cardData.likes;
     this._userId = cardData.userId;
-    // this._ownerId = cardData.owner._id;
+    this._ownerId = cardData.owner._id;
     this._cardId = cardData._id;
+    this._myId = myId;
 
     this._cardTemplateSelector = cardTemplateSelector;
     this._handleCardClick = handleCardClick;
-    this._handleLikeClick = handleLikeClick;
+    this._handleDeleteClick = handleDeleteClick;
+    // this._handleLikeClick = handleLikeClick;
+  }
+
+  getId() {
+    return this._cardId;
   }
 
   setLikes(likes) {
@@ -36,7 +44,7 @@ class Card {
 
   isLiked() {
     return this._likes.some((like) => {
-      return like._cardId === this._userId;
+      return like._cardId === this._myId;
     });
   }
 
@@ -48,13 +56,13 @@ class Card {
     this._cardImage.addEventListener("click", () => {
       this._handleCardClick({ name: this._name, link: this._link });
     });
-    this._likeButton.addEventListener("click", () => this._handleLikeButton());
+    // this._likeButton.addEventListener("click", () => this._handleLikeButton());
     this._deleteButton.addEventListener("click", () =>
-      this._handleDeleteButton()
+      this._handleDeleteClick()
     );
   }
 
-  _handleDeleteButton() {
+  removeCardElement() {
     this._cardElement.remove();
   }
 
