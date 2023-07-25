@@ -1,4 +1,4 @@
-export class Api {
+export default class Api {
   constructor({ baseUrl, headers }) {
     this._baseUrl = baseUrl;
     this._headers = headers;
@@ -35,16 +35,16 @@ export class Api {
     }).then(this._handleServerResponse);
   }
 
-  removeCard(cardID) {
-    return fetch(`${this._baseUrl}/cards/${cardID}`, {
+  removeCard(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: "DELETE",
       headers: this._headers,
     }).then(this._handleServerResponse);
   }
 
-  changeLikeStatus(cardID, isLiked) {
-    return fetch(`${this._baseUrl}/cards/likes/${cardID}`, {
-      method: isLiked ? "DELETE" : "PUT",
+  changeLikeStatus(cardId, isLiked) {
+    return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+      method: isLiked ? "PUT" : "DELETE",
       headers: this._headers,
     }).then(this._handleServerResponse);
   }
@@ -60,12 +60,12 @@ export class Api {
     }).then(this._handleServerResponse);
   }
 
-  setUserAvatar(url) {
+  setUserAvatar({ avatar }) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
-        avatar: url,
+        avatar,
       }),
     }).then(this._handleServerResponse);
   }
