@@ -143,17 +143,17 @@
             type="url"
             class="form__input"
             id="profile-avatar-input-url"
-            name="link"
+            name="url"
             placeholder="Image URL"
             required
           />
-          <span class="form__error" id="avatar-input-url-error"></span>
+          <span class="form__error" id="profile-avatar-input-url-error"></span>
           <button class="form__button" type="submit">Save</button>
         </form>
       </div>
     </div>
 
-    <!-- CARD DELETE BUTTON MODAL-->
+    <!-- CARD DELETE CONFIRM MODAL-->
 
     <div class="modal" id="modal-card-delete">
       <div class="modal__container">
@@ -163,7 +163,7 @@
           id="delete-modal-form"
           name="delete-form"
         >
-          <h2 class="form__label">Are you sure?</h2>
+          <h2 class="form__label form__label_type_delete">Are you sure?</h2>
           <button class="form__button form__button_type_delete" type="submit">
             Yes
           </button>

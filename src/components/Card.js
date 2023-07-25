@@ -1,37 +1,35 @@
 class Card {
   constructor(
     cardData,
-    myId,
     cardTemplateSelector,
+    userId,
     handleCardClick,
-    handleDeleteClick
-    // handleLikeClick
+    handleDeleteClick,
+    handleLikeClick
   ) {
     this._name = cardData.name;
     this._link = cardData.link;
     this._likes = cardData.likes;
-    this._userId = cardData.userId;
     this._ownerId = cardData.owner._id;
     this._cardId = cardData._id;
-    this._myId = myId;
+    this._userId = userId;
 
     this._cardTemplateSelector = cardTemplateSelector;
     this._handleCardClick = handleCardClick;
     this._handleDeleteClick = handleDeleteClick;
-    // this._handleLikeClick = handleLikeClick;
-  }
-
-  getId() {
-    return this._cardId;
-  }
-
-  setLikes(likes) {
-    this._likes = likes;
-    this.renderLikes();
+    this._handleLikeClick = handleLikeClick;
   }
 
   _renderLikes() {
     this._likeCounter.textContent = this._likes.length;
+    if (this.isLiked()) {
+      this._likeButton.classList.add("card__like-button-active");
+    }
+  }
+
+  updateLikes(likes) {
+    this._likes = likes;
+    this._renderLikes();
   }
 
   toggleLikes() {
@@ -44,22 +42,30 @@ class Card {
 
   isLiked() {
     return this._likes.some((like) => {
-      return like._cardId === this._myId;
+      return like._id === this._userId;
     });
   }
 
   _handleLikeButton() {
-    this._handleCardLike({ _id: this._id, likes: this._likes });
+    this._handleLikeClick({ _id: this._id, likes: this._likes });
+    this.renderLikes();
+  }
+
+  _checkUserId() {
+    if (this._ownerId !== this._userId) {
+      this._deleteButton.classList.add("card__delete-button_inactive");
+    }
   }
 
   _setEventListeners() {
     this._cardImage.addEventListener("click", () => {
       this._handleCardClick({ name: this._name, link: this._link });
     });
-    // this._likeButton.addEventListener("click", () => this._handleLikeButton());
+    this._likeButton.addEventListener("click", () => this._handleLikeButton());
     this._deleteButton.addEventListener("click", () =>
       this._handleDeleteClick()
     );
+    this._checkUserId();
   }
 
   removeCardElement() {
@@ -87,6 +93,7 @@ class Card {
     this._cardTitle.textContent = this._name;
     this._cardImage.alt = `Photo of ${this._name}`;
     this._setEventListeners();
+    this._renderLikes();
     return this._cardElement;
   }
 }
