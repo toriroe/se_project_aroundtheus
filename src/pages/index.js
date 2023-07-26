@@ -203,7 +203,7 @@ function handleCardFormSubmit({ name, link }) {
       console.error(err);
     })
     .finally(() => {
-      addCardPopup.setLoading(false), "Create";
+      addCardPopup.setLoading(false, "Create");
     });
 }
 
