@@ -7,6 +7,16 @@ export const config = {
   errorClass: "form__error_visible",
 };
 
+export const profileEditButton = document.querySelector("#profile-edit-button");
+export const inputName = document.querySelector("#form-input-name");
+export const inputDescription = document.querySelector(
+  "#form-input-description"
+);
+export const cardAddButton = document.querySelector("#card-add-button");
+export const avatarEditButton = document.querySelector(
+  ".profile__photo-edit-button"
+);
+
 // export const initialCards = [
 //   {
 //     name: "Alaverdi, Armenia",

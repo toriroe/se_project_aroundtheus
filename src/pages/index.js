@@ -5,21 +5,16 @@ import Section from "../components/Section.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/Userinfo.js";
-import { config } from "../utils/constants.js";
 import Api from "../components/Api.js";
 import PopupWithConfirm from "../components/PopupWithConfirm";
-
-/*
-  ┌─────────────────────────────────────────────────────────────────────────┐
-  │ MODAL ELEMENTS                                                          │
-  └─────────────────────────────────────────────────────────────────────────┘
- */
-
-const profileEditButton = document.querySelector("#profile-edit-button");
-const inputName = document.querySelector("#form-input-name");
-const inputDescription = document.querySelector("#form-input-description");
-const cardAddButton = document.querySelector("#card-add-button");
-const avatarEditButton = document.querySelector(".profile__photo-edit-button");
+import { config } from "../utils/constants.js";
+import {
+  profileEditButton,
+  inputName,
+  inputDescription,
+  cardAddButton,
+  avatarEditButton,
+} from "../utils/constants.js";
 
 /*
   ┌─────────────────────────────────────────────────────────────────────────┐
@@ -36,7 +31,6 @@ const api = new Api({
 });
 
 let cardSection;
-let userId;
 
 /*
   ┌─────────────────────────────────────────────────────────────────────────┐
@@ -140,7 +134,6 @@ function renderCard(cardData) {
   const cardElement = new Card(
     cardData,
     "#card-template",
-    userId,
     handleCardClick,
     function handleDeleteClick() {
       cardDeletePopup.setSubmitAction(() => {
@@ -160,13 +153,11 @@ function renderCard(cardData) {
       });
       cardDeletePopup.open();
     },
-    function handleLikeClick(cardData) {
+    function handleLikeClick() {
       api
         .changeLikeStatus(cardData._id, cardElement.isLiked())
         .then((res) => {
-          const likes = res.likes || [];
-          cardElement.updateLikes(likes);
-          cardElement.toggleLikes();
+          console.log(res);
         })
         .catch((err) => {
           console.error(err);

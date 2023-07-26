@@ -2,17 +2,14 @@ class Card {
   constructor(
     cardData,
     cardTemplateSelector,
-    userId,
     handleCardClick,
     handleDeleteClick,
     handleLikeClick
   ) {
     this._name = cardData.name;
     this._link = cardData.link;
-    this._likes = cardData.likes;
     this._ownerId = cardData.owner._id;
     this._cardId = cardData._id;
-    this._userId = userId;
 
     this._cardTemplateSelector = cardTemplateSelector;
     this._handleCardClick = handleCardClick;
@@ -21,51 +18,37 @@ class Card {
   }
 
   _renderLikes() {
-    this._likeCounter.textContent = this._likes.length;
     if (this.isLiked()) {
-      this._likeButton.classList.add("card__like-button-active");
+      this._likeButton.classList.add("card__like-button_active");
     }
   }
 
-  updateLikes(likes) {
-    this._likes = likes;
-    this._renderLikes();
-  }
-
-  toggleLikes() {
-    if (this.isLiked()) {
-      this._likeButton.classList.add("card__like-button-active");
+  toggleLikeButton() {
+    if (this._likeButton.classList.contains("card__like-button_active")) {
+      this._likeButton.classList.remove("card__like-button_active");
     } else {
-      this._likeButton.classList.remove("card__like-button-active");
+      this._likeButton.classList.add("card__like-button_active");
     }
   }
 
   isLiked() {
-    return this._likes.some((like) => {
-      return like._id === this._userId;
-    });
-  }
-
-  _handleLikeButton() {
-    this._handleLikeClick({ _id: this._id, likes: this._likes });
-    this.renderLikes();
-  }
-
-  _checkUserId() {
-    if (this._ownerId !== this._userId) {
-      this._deleteButton.classList.add("card__delete-button_inactive");
+    if (this._likeButton.classList.contains("card__like-button_active")) {
+      return true;
     }
+    return false;
   }
 
   _setEventListeners() {
     this._cardImage.addEventListener("click", () => {
       this._handleCardClick({ name: this._name, link: this._link });
     });
-    this._likeButton.addEventListener("click", () => this._handleLikeButton());
+    this._likeButton.addEventListener("click", () => {
+      this.toggleLikeButton();
+      this._handleLikeClick();
+    });
     this._deleteButton.addEventListener("click", () =>
       this._handleDeleteClick()
     );
-    this._checkUserId();
   }
 
   removeCardElement() {
