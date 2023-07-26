@@ -154,9 +154,9 @@ function renderCard(cardData) {
       });
       cardDeletePopup.open();
     },
-    function handleLikeClick() {
+    function handleLikeButtonClick() {
       api
-        .changeLikeStatus(cardData._id, cardElement.isLiked())
+        .changeLikeStatus(cardData._id, cardData.isLiked)
         .then((res) => {
           console.log(res);
         })

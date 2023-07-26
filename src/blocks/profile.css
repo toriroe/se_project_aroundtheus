@@ -111,6 +111,11 @@
 
   .profile__photo {
     margin: 0;
+  }
+
+  .profile__photo-container {
+    position: relative;
+    margin: 0;
     margin-bottom: 30px;
   }
 

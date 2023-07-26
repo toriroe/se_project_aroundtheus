@@ -44,7 +44,7 @@ export default class Api {
 
   changeLikeStatus(cardId, isLiked) {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-      method: isLiked ? "PUT" : "DELETE",
+      method: isLiked ? "DELETE" : "PUT",
       headers: this._headers,
     }).then(this._handleServerResponse);
   }
