@@ -156,10 +156,9 @@ function renderCard(cardData) {
     },
     function handleLikeButtonClick() {
       api
-        .changeLikeStatus(cardData._id, cardData.isLiked)
+        .changeLikeStatus(cardData._id, cardElement.isLiked)
         .then((res) => {
           console.log(res);
-
           cardElement.updateLikes(res.isLiked);
         })
         .catch((err) => {
