@@ -18,23 +18,22 @@ class Card {
     this._handleLikeButtonClick = handleLikeButtonClick;
   }
 
-  _setLikeButton() {
+  _toggleLikeButton() {
     if (this._isLiked) {
       this._likeButton.classList.add("card__like-button_active");
-    }
-  }
-
-  _toggleLikeButton() {
-    if (this._likeButton.classList.contains("card__like-button_active")) {
-      this._likeButton.classList.remove("card__like-button_active");
     } else {
-      this._likeButton.classList.add("card__like-button_active");
+      this._likeButton.classList.remove("card__like-button_active");
     }
   }
 
-  _handleLikeButton() {
+  // _handleLikeButton() {
+  //   this._toggleLikeButton();
+  //   this._handleLikeButtonClick();
+  // }
+
+  updateLikes(isLiked) {
+    this._isLiked = isLiked;
     this._toggleLikeButton();
-    this._handleLikeButtonClick();
   }
 
   _setEventListeners() {
@@ -42,7 +41,7 @@ class Card {
       this._handleCardClick({ name: this._name, link: this._link });
     });
     this._likeButton.addEventListener("click", () => {
-      this._handleLikeButton();
+      this._handleLikeButtonClick();
     });
     this._deleteButton.addEventListener("click", () =>
       this._handleDeleteClick()
@@ -74,7 +73,7 @@ class Card {
     this._cardTitle.textContent = this._name;
     this._cardImage.alt = `Photo of ${this._name}`;
     this._setEventListeners();
-    this._setLikeButton();
+    this._toggleLikeButton();
     return this._cardElement;
   }
 }
