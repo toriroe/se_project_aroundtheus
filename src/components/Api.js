@@ -8,65 +8,63 @@ export default class Api {
     return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
   }
 
-  getAppInfo() {
-    return Promise.all([this.getInitialCards(), this.getUserInfo()]);
+  _request(url, options) {
+    return fetch(url, options).then(this._handleServerResponse);
   }
 
   getInitialCards() {
-    return fetch(`${this._baseUrl}/cards`, {
-      headers: this._headers,
-    }).then(this._handleServerResponse);
+    return this._request(`${this._baseUrl}/cards`, { headers: this._headers });
   }
 
   getUserInfo() {
-    return fetch(`${this._baseUrl}/users/me`, {
+    return this._request(`${this._baseUrl}/users/me`, {
       headers: this._headers,
-    }).then(this._handleServerResponse);
+    });
   }
 
   addCard({ name, link }) {
-    return fetch(`${this._baseUrl}/cards`, {
+    return this._request(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify({
         name,
         link,
       }),
-    }).then(this._handleServerResponse);
+    });
   }
 
   removeCard(cardId) {
-    return fetch(`${this._baseUrl}/cards/${cardId}`, {
+    return this._request(`${this._baseUrl}/cards/${cardId}`, {
       method: "DELETE",
       headers: this._headers,
-    }).then(this._handleServerResponse);
+    });
   }
 
   changeLikeStatus(cardId, isLiked) {
-    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+    return this._request(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: isLiked ? "DELETE" : "PUT",
       headers: this._headers,
-    }).then(this._handleServerResponse);
+    });
   }
 
   updateUserInfo(name, description) {
-    return fetch(`${this._baseUrl}/users/me`, {
+    return this._request(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
         name: name,
         about: description,
       }),
-    }).then(this._handleServerResponse);
+    });
   }
 
   setUserAvatar(url) {
-    return fetch(`${this._baseUrl}/users/me/avatar`, {
+    return this._request(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
         avatar: url,
       }),
-    }).then(this._handleServerResponse);
+    });
   }
 }

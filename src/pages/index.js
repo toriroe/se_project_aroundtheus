@@ -63,30 +63,15 @@ const userInfo = new UserInfo(
 
 /*
   ┌─────────────────────────────────────────────────────────────────────────┐
-  │ LOAD USER INFO FROM SERVER                                              │
+  │ LOAD INITIAL CARDS/ USER INFO FROM SERVER                               │
   └─────────────────────────────────────────────────────────────────────────┘
  */
 
-api
-  .getUserInfo()
-  .then((res) => {
-    userInfo.setUserInfo(res.name, res.about);
-    userInfo.setUserAvatar(res.avatar);
-    userId = res._id;
-  })
-  .catch((err) => {
-    console.error(err);
-  });
-
-/*
-  ┌─────────────────────────────────────────────────────────────────────────┐
-  │ LOAD INITIAL CARDS FROM SERVER                                          │
-  └─────────────────────────────────────────────────────────────────────────┘
- */
-
-api
-  .getInitialCards()
-  .then((initialCards) => {
+Promise.all([api.getInitialCards(), api.getUserInfo()])
+  .then(([initialCards, userData]) => {
+    userInfo.setUserInfo(userData.name, userData.about);
+    userInfo.setUserAvatar(userData.avatar);
+    userId = userData._id;
     cardSection = new Section(
       {
         items: initialCards,
@@ -99,7 +84,7 @@ api
     );
     cardSection.renderItems();
   })
-  .catch((err) => console.error(err));
+  .catch(console.err);
 
 /*
   ┌─────────────────────────────────────────────────────────────────────────┐
@@ -145,9 +130,7 @@ function renderCard(cardData) {
             cardElement.removeCardElement(res._id);
             cardDeletePopup.close();
           })
-          .catch((err) => {
-            console.error(err);
-          })
+          .catch(console.err)
           .finally(() => {
             cardDeletePopup.setLoading(false, "Yes");
           });
@@ -161,9 +144,7 @@ function renderCard(cardData) {
           console.log(res);
           cardElement.updateLikes(res.isLiked);
         })
-        .catch((err) => {
-          console.error(err);
-        });
+        .catch(console.err);
     }
   );
   return cardElement.getView();
@@ -183,9 +164,7 @@ function handleProfileFormSubmit({ name, description }) {
       userInfo.setUserInfo(name, description);
       editProfilePopup.close();
     })
-    .catch((err) => {
-      console.error(err);
-    })
+    .catch(console.err)
     .finally(() => {
       editProfilePopup.setLoading(false, "Save");
     });
@@ -200,9 +179,7 @@ function handleCardFormSubmit({ name, link }) {
       cardSection.prependItem(cardElement);
       addCardPopup.close();
     })
-    .catch((err) => {
-      console.error(err);
-    })
+    .catch(console.err)
     .finally(() => {
       addCardPopup.setLoading(false, "Create");
     });
@@ -216,9 +193,7 @@ function handleAvatarFormSubmit({ url }) {
       userInfo.setUserAvatar(userData.avatar);
       avatarEditPopup.close();
     })
-    .catch((err) => {
-      console.error(err);
-    })
+    .catch(console.err)
     .finally(() => {
       avatarEditPopup.setLoading(false, "Save");
     });
