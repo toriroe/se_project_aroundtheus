@@ -84,7 +84,7 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
     );
     cardSection.renderItems();
   })
-  .catch(console.err);
+  .catch(console.error);
 
 /*
   ┌─────────────────────────────────────────────────────────────────────────┐
@@ -130,9 +130,9 @@ function renderCard(cardData) {
             cardElement.removeCardElement(res._id);
             cardDeletePopup.close();
           })
-          .catch(console.err)
+          .catch(console.error)
           .finally(() => {
-            cardDeletePopup.setLoading(false, "Yes");
+            cardDeletePopup.setLoading(false);
           });
       });
       cardDeletePopup.open();
@@ -144,7 +144,7 @@ function renderCard(cardData) {
           console.log(res);
           cardElement.updateLikes(res.isLiked);
         })
-        .catch(console.err);
+        .catch(console.error);
     }
   );
   return cardElement.getView();
@@ -164,9 +164,9 @@ function handleProfileFormSubmit({ name, description }) {
       userInfo.setUserInfo(name, description);
       editProfilePopup.close();
     })
-    .catch(console.err)
+    .catch(console.error)
     .finally(() => {
-      editProfilePopup.setLoading(false, "Save");
+      editProfilePopup.setLoading(false);
     });
 }
 
@@ -179,9 +179,9 @@ function handleCardFormSubmit({ name, link }) {
       cardSection.prependItem(cardElement);
       addCardPopup.close();
     })
-    .catch(console.err)
+    .catch(console.error)
     .finally(() => {
-      addCardPopup.setLoading(false, "Create");
+      addCardPopup.setLoading(false);
     });
 }
 
@@ -193,9 +193,9 @@ function handleAvatarFormSubmit({ url }) {
       userInfo.setUserAvatar(userData.avatar);
       avatarEditPopup.close();
     })
-    .catch(console.err)
+    .catch(console.error)
     .finally(() => {
-      avatarEditPopup.setLoading(false, "Save");
+      avatarEditPopup.setLoading(false);
     });
 }
 
