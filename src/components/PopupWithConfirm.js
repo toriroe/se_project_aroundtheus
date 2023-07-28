@@ -5,17 +5,18 @@ export default class PopupWithConfirm extends Popup {
     super({ popupSelector });
     this._popupForm = this._popupElement.querySelector(".modal__form");
     this._submitButton = this._popupForm.querySelector(".form__button");
+    this._submitButtonText = this._submitButton.textContent;
   }
 
   setSubmitAction(action) {
     this._handleFormSubmit = action;
   }
 
-  setLoading(isLoading, normalText) {
+  setLoading(isLoading, loadingText = "Removing...") {
     if (isLoading) {
-      this._submitButton.textContent = "Removing...";
+      this._submitButton.textContent = loadingText;
     } else {
-      this._submitButton.textContent = normalText;
+      this._submitButton.textContent = this._submitButtonText;
     }
   }
 
