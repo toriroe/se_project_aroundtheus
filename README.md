@@ -17,5 +17,5 @@ This is the final version of the "Around the US" project of the Software Enginee
 - Utilizes webpack
 
 ## Links
-- [Github page](https://toriroe.github.io/se_project_aroundtheus)
-- Figma Design: [Site layout](https://www.figma.com/file/Es8zZP3ARGH9JGcw60i3OD/Sprint-3_-Around-the-US?type=design&node-id=6432-147&mode=design&t=MBBBCmXy9lAsspkr-0) [Modals](https://www.figma.com/file/JFPhASqvZ5pBjQV2ouUlim/Sprint-5_-Around-The-U.S.-_-desktop-%2B-mobile-(Copy)?type=design&node-id=0-1&mode=design&t=gBjTeiPAoxX4EEmJ-0#40;Copy&#41;?t=3hvVWRz9LUFsxyNn-6) [Form validation](https://www.figma.com/file/N3zUeequnpvMX807FfYAZW/Sprint-6-Around-The-U.S.?type=design&node-id=0-1&mode=design&t=VZUeKoPa60lXv95e-0)
+[Github page](https://toriroe.github.io/se_project_aroundtheus)
+Figma Design: [Site layout](https://www.figma.com/file/Es8zZP3ARGH9JGcw60i3OD/Sprint-3_-Around-the-US?type=design&node-id=6432-147&mode=design&t=MBBBCmXy9lAsspkr-0) [Modals](https://www.figma.com/file/JFPhASqvZ5pBjQV2ouUlim/Sprint-5_-Around-The-U.S.-_-desktop-%2B-mobile-(Copy)?type=design&node-id=0-1&mode=design&t=gBjTeiPAoxX4EEmJ-0#40;Copy&#41;?t=3hvVWRz9LUFsxyNn-6) [Form validation](https://www.figma.com/file/N3zUeequnpvMX807FfYAZW/Sprint-6-Around-The-U.S.?type=design&node-id=0-1&mode=design&t=VZUeKoPa60lXv95e-0)
